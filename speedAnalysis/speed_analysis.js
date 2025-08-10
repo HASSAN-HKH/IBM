@@ -23,14 +23,15 @@ function endTest(){
     let userText =  document.getElementById("userInput").value;
     let words = userText.trim().split(/\s+/);
     let wpm = 0;
+    let userTypedText = userText.length;
 
     if(timeTaken !== 0 && !isNaN(words.length)){
         wpm = Math.round((words.length / timeTaken) * 60);
     }
 
-    document.getElementById("output").innerHTML = `<h2>Typing Test Results:</h2> <p>Words Typed: " ${words.length} "</p>
-    <p>Time Elapsed: " ${timeTaken.toFixed(2)} " seconds</p>
-    <p>Words Per Minute (WPM): " ${wpm} "</p>`
+    document.getElementById("output").innerHTML = `<h2>Typing Test Results:</h2> <p>Words Typed: ${words.length}</p>
+    <p>Total Length: ${userTypedText}</p> <p>Time Elapsed: ${timeTaken.toFixed(2)} seconds</p>
+    <p>Words Per Minute (WPM): ${wpm} </p>`
 
     // document.getElementById("userInput").readOnly = true;
 }
