@@ -2,6 +2,7 @@ let taskInput = document.getElementById("taskInput");
 let addTaskBtn = document.getElementById("addTaskBtn");
 let taskList = document.getElementById("taskList");
 let clearCompletedBtn = document.getElementById("clearCompletedBtn");
+let clearAllBtn = document.getElementById("clearAllBtn");
 
 let tasks = [];
 
@@ -21,6 +22,9 @@ function displayTasks(){
         let li = document.createElement("li");
         li.innerHTML = `<input type="checkbox" id="task-${ind}" />
         <label for="task-${ind}">${element.value}</label>`;
+        if(element.completed === true){
+            li.querySelector("input").checked = true;
+        }
         li.querySelector("input").onchange = function(){
             if(this.checked){
                 element.completed = true;
@@ -44,4 +48,8 @@ function clearCompletedTasks(){
 
 clearCompletedBtn.addEventListener("click" , clearCompletedTasks);
 
-
+clearAllBtn.onclick = function(){
+    tasks = [];
+    displayTasks();
+    console.log(tasks);
+}
